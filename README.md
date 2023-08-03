@@ -1,7 +1,56 @@
+```
+sudo apt update
+
+```
+```
+sudo apt install nodejs npm
+
+```
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+```
+```
+sudo apt update
+sudo apt install npm
 
 
+```
+```
+npm install -g next
 
 
+```
+```
+npm install next
+
+
+```
+```
+npx next dev
+
+
+```
+```
+
+nvm install stable
+
+```
+```
+nvm use stable
+
+
+```
+```
+sudo ln -s /etc/nginx/sites-available/meusite /etc/nginx/sites-enabled/
+
+
+```
+```
+cd /caminho/para/sua/aplicacao
+npm install
+npm run dev
+``
 ```
 sudo nano /etc/nginx/sites-available/lpa-frontend
 ```
