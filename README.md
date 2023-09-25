@@ -50,7 +50,7 @@ sudo ln -s /etc/nginx/sites-available/meusite /etc/nginx/sites-enabled/
 cd /caminho/para/sua/aplicacao
 npm install
 npm run dev
-``
+```
 ```
 sudo nano /etc/nginx/sites-available/lpa-frontend
 ```
