@@ -10,12 +10,18 @@ export default function Calculador() {
     const [operador, setOperador] = useState("");
 
     const handleNumberInput = (num) => {
-        if(displayValue == "0") {
-            setDisplayValue(num)
-        } else {
-            setDisplayValue(displayValue + num)
+        if (displayValue === "Impossível dividir por zero") {
+            setDisplayValue(num);
+            return;
         }
-    }
+
+        if (displayValue === "0") {
+            setDisplayValue(num);
+        } else {
+            setDisplayValue(displayValue + num);
+        }
+    };
+
 
     const handleOperatorInput = (operador) => {
         setOperador(operador);
@@ -27,15 +33,22 @@ export default function Calculador() {
         const num1 = parseFloat(firstValue)
         const num2 = parseFloat(displayValue)
 
+        if (operador === "/" && num2 === 0) {
+            setDisplayValue("Impossível dividir por zero");
+            return;
+        }
+
+
         if( operador  === "+") {
             setDisplayValue((num1 + num2).toString());
         } else if (operador === "-") {
             setDisplayValue((num1 - num2).toString());
-        } else if (operador === "*") {
-            setFirstValue((num1 * num2).toString());
+        }  else if (operador === "*") {
+            setDisplayValue((num1 * num2).toString());
         } else if (operador === "/") {
-            setFirstValue((num1 / num2).toString());
-        } else if (operador === "%") {
+            setDisplayValue((num1 / num2).toString());
+        }
+        else if (operador === "%") {
             setDisplayValue((num1 % num2).toString());
         }
 
@@ -61,7 +74,19 @@ export default function Calculador() {
         <View style={styles.container}>
             <View style={styles.display}>
                 <Text style={{fontSize:30,fontWeight:"300"}}>{firstValue + operador}</Text>
-                <Text style={styles.displayNumber}>{displayValue}</Text>
+                <Text
+                style={[
+                    styles.displayNumber,
+                    {
+                        fontSize: displayValue.length > 10 ? 25 : 70,
+                        color: displayValue === "Impossível dividir por zero" ? 'red' : '#000'
+                    }
+                ]}
+            >
+                {displayValue}
+            </Text>
+
+
             </View>
             <View style={styles.keypad}>
                 <Button title="c" type="top" onPress={handleClear}/>
